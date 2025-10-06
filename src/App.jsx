@@ -1,36 +1,43 @@
-import { useState, useEffect } from 'react'
+import { useEffect, useState } from 'react'
+import { GET_PORTFOLIO_ITEMS } from './graphql/queries'
 
 export default function App() {
   const [posts, setPosts] = useState([])
 
   useEffect(() => {
-    // Replace with your WordPress REST API URL
-    const apiUrl = 'http://localhost:8888/vp-portfolio-cms/wp-json/wp/v2/portfolio_items?_embed'
+    const graphqlEndpoint = 'http://localhost:8888/vp-portfolio-cms/graphql'
 
-    fetch(apiUrl)
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok')
-        }
-        return response.json()
+    fetch(graphqlEndpoint, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({query: GET_PORTFOLIO_ITEMS }),
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        console.log('GraphQL result:', result)
+        setPosts(result.data.portfolioItems.nodes)
       })
-      .then((data) => {
-        console.log('Fetched posts:', data) // Log posts to console
-        setPosts(data)
-      })
-      .catch((error) => {
-        console.error('Fetching posts failed:', error)
-      })
+      .catch((err) => console.error('GraphQL fetch error:', err))
   }, [])
 
   return (
-    <>
-      <h1 className='text-2xl'>WordPress Posts</h1>
-      <ul>
+    <div className='p-4'>
+      <h1 className='text-2xl font-semibold mb-4'>Portfolio Items</h1>
+      <ul className='space-y-4'>
         {posts.map((post) => (
-          <li key={post.id}>{post.title.rendered}</li>
+          <li key={post.title} className='border rounded-lg p-4 shadow'>
+            <h2 className='text-xl font-bold'>{post.title}</h2>
+            <p dangerouslySetInnerHTML={{ __html: post.content }}></p>
+            {post.featuredImage?.node?.sourceUrl && (
+              <img
+                src={post.featuredImage.node.sourceUrl}
+                alt={post.featuredImage.node.altText}
+                className='rounded-lg mt-2'
+              />
+            )}
+          </li>
         ))}
       </ul>
-    </>
+    </div>
   )
 }
