@@ -1,36 +1,29 @@
-import { useState, useEffect } from 'react'
+import usePortfolioItems from './hooks/usePortfolioItems';
 
 export default function App() {
-  const [posts, setPosts] = useState([])
+  const { posts, loading, error } = usePortfolioItems();
 
-  useEffect(() => {
-    // Replace with your WordPress REST API URL
-    const apiUrl = 'http://localhost:8888/vp-portfolio-cms/wp-json/wp/v2/portfolio_items?_embed'
-
-    fetch(apiUrl)
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok')
-        }
-        return response.json()
-      })
-      .then((data) => {
-        console.log('Fetched posts:', data) // Log posts to console
-        setPosts(data)
-      })
-      .catch((error) => {
-        console.error('Fetching posts failed:', error)
-      })
-  }, [])
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error.message}</p>;
 
   return (
-    <>
-      <h1 className='text-2xl'>WordPress Posts</h1>
-      <ul>
+    <div className="p-4">
+      <h1 className="text-2xl font-semibold mb-4">Portfolio Items</h1>
+      <ul className="space-y-4">
         {posts.map((post) => (
-          <li key={post.id}>{post.title.rendered}</li>
+          <li key={post.title} className="border rounded-lg p-4 shadow">
+            <h2 className="text-xl font-bold">{post.title}</h2>
+            <p dangerouslySetInnerHTML={{ __html: post.content }}></p>
+            {post.featuredImage?.node?.sourceUrl && (
+              <img
+                src={post.featuredImage.node.sourceUrl}
+                alt={post.featuredImage.node.altText}
+                className="rounded-lg mt-2"
+              />
+            )}
+          </li>
         ))}
       </ul>
-    </>
-  )
+    </div>
+  );
 }
