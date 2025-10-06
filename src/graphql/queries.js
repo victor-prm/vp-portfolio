@@ -1,4 +1,6 @@
-export const GET_PORTFOLIO_ITEMS = `
+import { gql } from '@apollo/client'
+
+export const GET_PORTFOLIO_ITEMS = gql`
   query GetPortfolioItems {
   portfolioItems {
     nodes {
@@ -65,3 +67,4 @@ export const GET_PORTFOLIO_ITEMS = `
   }
 }
 `
+
