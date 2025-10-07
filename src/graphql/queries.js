@@ -68,3 +68,78 @@ export const GET_PORTFOLIO_ITEMS = gql`
 }
 `
 
+export const GET_MENU_SETS = gql`
+query GetMenuSets{
+  menuSets {
+    nodes {
+      title
+      customMenuSets {
+        menuItems {
+          topLevelLink {
+            nodes {
+              ... on MenuLink {
+                title
+                id
+                customMenuLinks {
+                  subpath
+                  openNewTab
+                }
+              }
+            }
+          }
+          nestedLinks {
+            nodes {
+              ... on MenuLink {
+                title
+                id
+                customMenuLinks {
+                  subpath
+                  openNewTab
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}`
+
+
+export const GET_MAIN_NAVIGATION = gql`
+query GET_MAIN_NAVIGATION {
+  menuSets(where: { title: "Main Navigation" }) {
+    nodes {
+      title
+      customMenuSets {
+        menuItems {
+          topLevelLink {
+            nodes {
+              ... on MenuLink {
+                title
+                id
+                customMenuLinks {
+                  openNewTab
+                  subpath
+                }
+              }
+            }
+          }
+          nestedLinks {
+            nodes {
+              ... on MenuLink {
+                title
+                id
+                customMenuLinks {
+                  openNewTab
+                  subpath
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+`;
