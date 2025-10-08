@@ -15,6 +15,7 @@ export default function MasonryGrid({ children }) {
       ultimateGutter: 16,
       surroundingGutter: false,
       minify: true,
+      wedge: true
     });
 
     // Re-layout when window resizes
@@ -28,7 +29,7 @@ export default function MasonryGrid({ children }) {
   }, [children]);
 
   return (
-    <div ref={containerRef} className="masonry min-h-full relative">
+    <div ref={containerRef} className="masonry relative">
       {children.length > 0 ? (
         children.map((child, idx) => (
           <div key={idx} className="masonry-item w-auto box-border absolute">

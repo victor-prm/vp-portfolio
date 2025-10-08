@@ -8,7 +8,7 @@ export default function Layout() {
       <main className="pt-24">
         <Outlet /> {/* Nested routes render here */}
       </main>
-      <footer>My Footer</footer>
+      {/* <footer>My Footer</footer> */}
     </div>
   );
 }
