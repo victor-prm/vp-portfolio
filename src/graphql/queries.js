@@ -1,7 +1,7 @@
 import { gql } from '@apollo/client'
 
 export const GET_PORTFOLIO_ITEMS = gql`
-  query GetPortfolioItems {
+query GetPortfolioItems {
   portfolioItems {
     nodes {
       featuredImage{
@@ -10,6 +10,10 @@ export const GET_PORTFOLIO_ITEMS = gql`
           title
           caption
           altText
+          mediaDetails{
+              width
+              height
+            }
         }
       }
       title
@@ -38,6 +42,10 @@ export const GET_PORTFOLIO_ITEMS = gql`
             title
             caption
             description
+            mediaDetails{
+              width
+              height
+            }
           }
         }
         year
@@ -66,6 +74,7 @@ export const GET_PORTFOLIO_ITEMS = gql`
     }
   }
 }
+
 `
 
 export const GET_MENU_SETS = gql`
