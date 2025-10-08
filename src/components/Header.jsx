@@ -20,7 +20,6 @@ export default function Header() {
             {itemGroup.topLevelLink?.nodes?.map((link) => {
               // ✅ define it inside this map, so "link" is in scope
               const topLevelLink = `${baseUrl}${link.customMenuLinks?.subpath || ''}`;
-              console.log(topLevelLink)
 
               return (
                 <div key={link.id} className="mb-2">

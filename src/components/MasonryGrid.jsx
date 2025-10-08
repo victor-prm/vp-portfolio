@@ -25,20 +25,19 @@ export default function MasonryGrid({ children }) {
       window.removeEventListener("resize", handleResize);
       masonry.destroy();
     };
-  }, []);
-
-  // Wrap each direct child in a "masonry-item"
-  const wrappedChildren = Array.isArray(children)
-    ? children.map((child, idx) => (
-        <div key={idx} className="masonry-item w-auto box-border absolute">
-          {child}
-        </div>
-      ))
-    : <article className="masonry-item w-auto box-border absolute">{children}</article>;
+  }, [children]);
 
   return (
     <div ref={containerRef} className="masonry min-h-full relative">
-      {wrappedChildren}
+      {children.length > 0 ? (
+        children.map((child, idx) => (
+          <div key={idx} className="masonry-item w-auto box-border absolute">
+            {child}
+          </div>
+        ))
+      ) : (
+        <p className="text-gray-500">No items</p>
+      )}
     </div>
   );
 }
