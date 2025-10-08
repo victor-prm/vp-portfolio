@@ -16,9 +16,9 @@ export default function App() {
             <h1 className="text-2xl font-semibold mb-4 capitalize">{page}</h1>
             <MasonryGrid>
                 {posts.map((post) => (
-                    <article key={post.title} className=" rounded-lg shadow relative overflow-clip">
-                        <div className='absolute bottom-4 left-4 px-4 py-3 rounded-4xl bg-vp-gray-950/50 backdrop-blur-sm grayscale-100'> 
-                            <h2 className="text-xl font-bold">{post.title}</h2>
+                    <article key={post.title} className="border-vp-gray-950/30 border-2 rounded-4xl shadow relative overflow-clip grayscale-100 cursor-pointer hover:grayscale-0 transition[hover] duration-1000">
+                        <div className='absolute bottom-4 left-4 px-4 py-2 rounded-4xl bg-vp-gray-950/50 backdrop-blur-sm'> 
+                            <h2 className="text-md font-bold">{post.title}</h2>
                             <p dangerouslySetInnerHTML={{ __html: post.content }}></p>
                         </div>
                         {post.featuredImage?.node?.sourceUrl && (
