@@ -11,7 +11,7 @@ export default function MasonryGrid({ children }) {
       container: containerRef.current,
       baseWidth: 320,
       gutterX: 4,
-      gutterY: 4,
+      gutterY: 16,
       ultimateGutter: 4,
       surroundingGutter: false,
       minify: true,

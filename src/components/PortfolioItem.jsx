@@ -5,7 +5,7 @@ export default function PortfolioItem({ title, year, featuredImage, technologies
     return (
         <article
             className="
-        border-vp-gray-800/30 border-2 rounded-3xl shadow
+        border-vp-gray-800/40 border-2 rounded-3xl shadow-vp-gray-800/20 shadow-xl
         relative overflow-clip grayscale-50 cursor-pointer
         hover:grayscale-0 transition-[filter] duration-1000
       "
@@ -13,11 +13,10 @@ export default function PortfolioItem({ title, year, featuredImage, technologies
             {featuredImage?.node?.sourceUrl && (
                 <MasonryImage image={featuredImage.node} />
             )}
-
-            <div className="bg-gradient-to-br from-vp-gray-900/70 to-vp-gray-800/30 px-3 pt-1 pb-2 flex flex-col gap-0.5">
+            <div className="bg-gradient-to-br from-vp-gray-900/70 to-vp-gray-800/30 px-3 pt-1 pb-2 flex flex-col">
                 <hgroup className="flex justify-between items-center">
-                    <h2 className="text-3xl font-bold text-vp-gray-100">{title}</h2>
-                    <p className="text-xl font-semibold text-vp-gray-200">{year}</p>
+                    <h2 className="text-2xl text-vp-gray-100">{title}</h2>
+                    <p className="text-xl text-vp-gray-200">{year}</p>
                 </hgroup>
 
                 {technologies && (
