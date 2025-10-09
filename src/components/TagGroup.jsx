@@ -7,7 +7,7 @@ export default function TagGroup({ tagArray }) {
         <ul className="flex flex-wrap gap-1">
             {
                 tagArray.map(tag => (
-                    <li key={tag.name}>
+                    <li key={tag.name} className="tag">
                         <Link to="#" className="text-xs bg-vp-gray-600/30 rounded-4xl px-1.5 py-0.5 whitespace-nowrap" >{tag.name}</Link>
                     </li>
                 ))}

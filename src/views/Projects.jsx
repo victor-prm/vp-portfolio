@@ -28,6 +28,7 @@ export default function App() {
                                 featuredImage={post.featuredImage}
                                 title={post.title}
                                 year={post.customPortfolioFields.year}
+                                slug={post.slug}
                                 technologies={post.technologies.nodes}
                                 roles={post.roles.nodes}
                                 workTypes={post.workTypes.nodes}

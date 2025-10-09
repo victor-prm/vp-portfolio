@@ -15,13 +15,13 @@ export const routes = createRoutesFromElements(
         <Layout />
       </ErrorBoundary>
     }
-    errorElement={<ErrorPage />} // Router-level (load/action) errors
+    errorElement={<ErrorPage />}
   >
     <Route index element={<Home />} />
     <Route path="projects" element={<Projects />} />
-    <Route path="post/:id" element={<Post />} />
+    <Route path="projects/:slug" element={<Post />} />
 
-    {/* Catch-all 404 route */}
+    {/* Catch-all 404 */}
     <Route path="*" element={<NotFoundPage />} />
   </Route>
 );

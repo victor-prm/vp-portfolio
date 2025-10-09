@@ -1,14 +1,23 @@
 import MasonryImage from "./MasonryImage";
 import TagGroup from "./TagGroup";
+import { useNavigate } from "react-router";
 
-export default function PortfolioItem({ title, year, featuredImage, technologies, roles, workTypes }) {
+export default function PortfolioItem({ title, year, featuredImage, slug, technologies, roles, workTypes }) {
+    const navigate = useNavigate();
+    const handleCardClick = (e) => {
+        // Prevent navigation when clicking a tag
+        if (e.target.closest(".tag")) return;
+        navigate(`/projects/${slug ? slug : "#"}`);
+    };
+
+
     return (
         <article
+            onClick={handleCardClick}
             className="
         border-vp-gray-800/40 border-2 rounded-3xl shadow-vp-gray-800/20 shadow-xl
         relative overflow-clip grayscale-50 cursor-pointer
-        hover:grayscale-0 transition-[filter] duration-1000
-      "
+        hover:grayscale-0 transition-[filter] duration-1000"
         >
             {featuredImage?.node?.sourceUrl && (
                 <MasonryImage image={featuredImage.node} />
@@ -26,5 +35,6 @@ export default function PortfolioItem({ title, year, featuredImage, technologies
                 )}
             </div>
         </article>
+
     );
 }
