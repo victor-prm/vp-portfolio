@@ -7,7 +7,7 @@ import TestError from '../errors/TestError';
 
 
 
-export default function App() {
+export default function Projects() {
     const { posts, loading, error } = usePortfolioItems();
     const { page } = usePageTitle();
 
