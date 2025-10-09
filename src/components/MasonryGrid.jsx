@@ -10,9 +10,9 @@ export default function MasonryGrid({ children }) {
     const masonry = new MiniMasonry({
       container: containerRef.current,
       baseWidth: 320,
-      gutterX: 16,
+      gutterX: 4,
       gutterY: 16,
-      ultimateGutter: 16,
+      ultimateGutter: 4,
       surroundingGutter: false,
       minify: true,
       wedge: true

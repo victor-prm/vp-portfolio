@@ -74,8 +74,70 @@ query GetPortfolioItems {
     }
   }
 }
-
 `
+
+export const GET_PORTFOLIO_ITEM_SINGLE = gql`
+  query GetPortfolioItemDetails($slug: String!) {
+    portfolioItemBy(slug: $slug) {
+      title
+      slug
+      content
+      customPortfolioFields {
+        companies {
+          nodes {
+            ... on Company {
+              id
+              featuredImage {
+                node {
+                  sourceUrl
+                }
+              }
+              title
+              slug
+            }
+          }
+        }
+        portfolioItemGallery {
+          nodes {
+            id
+            sourceUrl
+            altText
+            title
+            caption
+            description
+            mediaDetails {
+              width
+              height
+            }
+          }
+        }
+        year
+      }
+      roles {
+        nodes {
+          id
+          name
+          slug
+        }
+      }
+      technologies {
+        nodes {
+          id
+          name
+          slug
+        }
+      }
+      workTypes {
+        nodes {
+          id
+          name
+          slug
+        }
+      }
+    }
+  }
+`;
+
 
 export const GET_MENU_SETS = gql`
 query GetMenuSets{

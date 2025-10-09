@@ -1,7 +1,10 @@
 import usePortfolioItems from '../hooks/usePortfolioItems';
 import MasonryGrid from '../components/MasonryGrid';
-import MasonryImage from '../components/MasonryImage';
 import usePageTitle from '../hooks/usePageTitle';
+import PortfolioItem from "../components/PortfolioItem";
+import ErrorBoundary from '../errors/ErrorBoundary';
+import TestError from '../errors/TestError';
+
 
 
 export default function App() {
@@ -13,19 +16,27 @@ export default function App() {
 
     return (
         <div className='p-4'>
-            <h1 className="text-2xl font-semibold mb-4 capitalize">{page}</h1>
+            {/* <h1 className="text-2xl font-semibold mb-4 capitalize">{page}</h1> */}
             <MasonryGrid>
-                {posts.map((post) => (
-                    <article key={post.title} className=" rounded-lg shadow relative overflow-clip">
-                        <div className='absolute bottom-4 left-4 px-4 py-3 rounded-4xl bg-vp-gray-950/50 backdrop-blur-sm grayscale-100'> 
-                            <h2 className="text-xl font-bold">{post.title}</h2>
-                            <p dangerouslySetInnerHTML={{ __html: post.content }}></p>
-                        </div>
-                        {post.featuredImage?.node?.sourceUrl && (
-                            <MasonryImage image={post.featuredImage.node} />
-                        )}
-                    </article>
-                ))}
+                {posts.map((post) => {
+
+                    console.log(post)
+                    return (
+                        <ErrorBoundary>
+                            < PortfolioItem
+                                key={post.title}
+                                featuredImage={post.featuredImage}
+                                title={post.title}
+                                year={post.customPortfolioFields.year}
+                                slug={post.slug}
+                                technologies={post.technologies.nodes}
+                                roles={post.roles.nodes}
+                                workTypes={post.workTypes.nodes}
+                            />
+                        </ErrorBoundary>
+                    )
+                }
+                )}
             </MasonryGrid>
         </div>
     );
