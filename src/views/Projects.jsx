@@ -1,8 +1,9 @@
 import usePortfolioItems from '../hooks/usePortfolioItems';
 import MasonryGrid from '../components/MasonryGrid';
-import MasonryImage from '../components/MasonryImage';
 import usePageTitle from '../hooks/usePageTitle';
 import PortfolioItem from "../components/PortfolioItem";
+import ErrorBoundary from '../errors/ErrorBoundary';
+import TestError from '../errors/TestError';
 
 
 
@@ -17,14 +18,20 @@ export default function App() {
         <div className='p-4'>
             <h1 className="text-2xl font-semibold mb-4 capitalize">{page}</h1>
             <MasonryGrid>
-                {posts.map((post) => (
-                    <PortfolioItem
-                        key={post.title}
-                        title={post.title}
-                        content={post.content}
-                        featuredImage={post.featuredImage}
-                    />
-                ))}
+                {posts.map((post) => {
+
+                    console.log(post)
+                    return (
+                        <ErrorBoundary>
+                            < PortfolioItem
+                                key={post.title}
+                                title={post.title}
+                                featuredImage={post.featuredImage}
+                            />
+                        </ErrorBoundary>
+                    )
+                }
+                )}
             </MasonryGrid>
         </div>
     );
