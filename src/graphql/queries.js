@@ -214,3 +214,36 @@ query GET_MAIN_NAVIGATION {
   }
 }
 `;
+
+export const GET_TAGS_TECHNOLOGIES = gql`
+  query GetTechnologies {
+    technologies {
+      nodes {
+        name
+        slug
+      }
+    }
+  }
+`;
+
+export const GET_TAGS_ROLES = gql`
+  query GetRoles {
+    roles {
+      nodes {
+        name
+        slug
+      }
+    }
+  }
+`;
+
+export const GET_TAGS_WORKTYPES = gql`
+  query GetWorkTypes {
+    workTypes {
+      nodes {
+        name
+        slug
+      }
+    }
+  }
+`;
