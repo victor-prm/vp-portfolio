@@ -2,6 +2,8 @@ import usePortfolioItems from '../hooks/usePortfolioItems';
 import MasonryGrid from '../components/MasonryGrid';
 import MasonryImage from '../components/MasonryImage';
 import usePageTitle from '../hooks/usePageTitle';
+import PortfolioItem from "../components/PortfolioItem";
+
 
 
 export default function App() {
@@ -16,15 +18,12 @@ export default function App() {
             <h1 className="text-2xl font-semibold mb-4 capitalize">{page}</h1>
             <MasonryGrid>
                 {posts.map((post) => (
-                    <article key={post.title} className="border-vp-gray-950/30 border-2 rounded-4xl shadow relative overflow-clip grayscale-100 cursor-pointer hover:grayscale-0 transition[hover] duration-1000">
-                        <div className='absolute bottom-4 left-4 px-4 py-2 rounded-4xl bg-vp-gray-950/50 backdrop-blur-sm'> 
-                            <h2 className="text-md font-bold">{post.title}</h2>
-                            <p dangerouslySetInnerHTML={{ __html: post.content }}></p>
-                        </div>
-                        {post.featuredImage?.node?.sourceUrl && (
-                            <MasonryImage image={post.featuredImage.node} />
-                        )}
-                    </article>
+                    <PortfolioItem
+                        key={post.title}
+                        title={post.title}
+                        content={post.content}
+                        featuredImage={post.featuredImage}
+                    />
                 ))}
             </MasonryGrid>
         </div>
