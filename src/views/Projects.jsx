@@ -15,8 +15,10 @@ export default function App() {
     if (error) return <p>Error: {error.message}</p>;
 
     return (
-        <div className='p-4'>
-            {/* <h1 className="text-2xl font-semibold mb-4 capitalize">{page}</h1> */}
+        <div className='px-4 pb-8 flex flex-col sm:flex-row'>
+            <div className='w-64 min-h-32 shrink-0'>
+                <h1 className="text-2xl font-semibold mb-4 capitalize">{page}</h1>
+            </div>
             <MasonryGrid>
                 {posts.map((post) => {
 

@@ -10,7 +10,7 @@ export default function Header() {
   if (!menuSet) return <p>No menu found</p>;
 
   return (
-    <header className="flex flex-col gap-4 fixed z-50 m-4 rounded-xl p-4 backdrop-blur-sm bg-vp-gray-900/50 w-fit">
+    <header className="flex flex-col gap-4 fixed z-50 m-4 w-fit">
       <nav>
         <img src="/vp-logo.svg" alt="VP Logo" className='h-6 w-fit' />
       </nav>

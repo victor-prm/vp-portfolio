@@ -9,9 +9,9 @@ export default function MasonryGrid({ children }) {
 
     const masonry = new MiniMasonry({
       container: containerRef.current,
-      baseWidth: 320,
+      baseWidth: 256,
       gutterX: 4,
-      gutterY: 16,
+      gutterY: 8,
       ultimateGutter: 4,
       surroundingGutter: false,
       minify: true,
@@ -29,7 +29,7 @@ export default function MasonryGrid({ children }) {
   }, [children]);
 
   return (
-    <div ref={containerRef} className="masonry relative">
+    <div ref={containerRef} className="masonry relative w-full">
       {children.length > 0 ? (
         children.map((child, idx) => (
           <div key={idx} className="masonry-item w-auto box-border absolute">

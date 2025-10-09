@@ -15,7 +15,7 @@ export default function PortfolioItem({ title, year, featuredImage, slug, techno
         <article
             onClick={handleCardClick}
             className="
-        border-vp-gray-800/40 border-2 rounded-3xl shadow-vp-gray-800/20 shadow-xl
+        border-vp-gray-800/40 border-2 rounded-3xl shadow-vp-gray-700/10 shadow-md
         relative overflow-clip grayscale-50 cursor-pointer
         hover:grayscale-0 transition-[filter] duration-500"
         >
@@ -24,8 +24,8 @@ export default function PortfolioItem({ title, year, featuredImage, slug, techno
             )}
             <div className="bg-gradient-to-br from-vp-gray-900/70 to-vp-gray-800/30 px-3 pt-1 pb-2 flex flex-col">
                 <hgroup className="flex justify-between items-center">
-                    <h2 className="text-2xl text-vp-gray-100">{title}</h2>
-                    <p className="text-xl text-vp-gray-200">{year}</p>
+                    <h2 className="text-xl text-vp-gray-100">{title}</h2>
+                    <p className="text-lg text-vp-gray-200">{year}</p>
                 </hgroup>
 
                 {technologies && (

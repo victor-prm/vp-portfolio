@@ -5,7 +5,7 @@ export default function Layout() {
   return (
     <div>
       <Header></Header>
-      <main className="pt-24">
+      <main className="pt-16">
         <Outlet /> {/* Nested routes render here */}
       </main>
       {/* <footer>My Footer</footer> */}
