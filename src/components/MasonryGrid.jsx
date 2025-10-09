@@ -9,9 +9,9 @@ export default function MasonryGrid({ children }) {
   useEffect(() => {
     const handleResize = () => {
       const width = window.innerWidth;
-      if (width < 640) setBaseWidth(200); // small screens
+      if (width < 640) setBaseWidth(180); // small screens
       /* else if (width < 1024) setBaseWidth(224); // medium */
-      else setBaseWidth(240); // large
+      else setBaseWidth(224); // large
     };
 
     handleResize(); // initial set
