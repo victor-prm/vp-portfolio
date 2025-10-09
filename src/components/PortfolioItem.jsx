@@ -1,22 +1,33 @@
 import MasonryImage from "./MasonryImage";
+import TagGroup from "./TagGroup";
 
-export default function PortfolioItem({ title, content, featuredImage }) {
-  return (
-    <article
-      className="
+export default function PortfolioItem({ title, year, featuredImage, technologies, roles, workTypes }) {
+    return (
+        <article
+            className="
         border-vp-gray-950/30 border-2 rounded-4xl shadow
         relative overflow-clip grayscale-50 cursor-pointer
         hover:grayscale-0 transition-[filter] duration-1000
       "
-    >
-      <div className="absolute bottom-4 left-4 px-4 py-2 rounded-4xl bg-vp-gray-950/50 backdrop-blur-sm">
-        <h2 className="text-md font-bold text-vp-gray-100">{title}</h2>
-        {content && <p dangerouslySetInnerHTML={{ __html: content }}></p>}
-      </div>
+        >
+            {featuredImage?.node?.sourceUrl && (
+                <MasonryImage image={featuredImage.node} />
+            )}
 
-      {featuredImage?.node?.sourceUrl && (
-        <MasonryImage image={featuredImage.node} />
-      )}
-    </article>
-  );
+            <div className="px-3 pt-1 pb-4 bg-vp-gray-900/50 flex flex-col gap-1">
+                <hgroup className="flex justify-between items-center">
+                    <h2 className="text-4xl font-bold text-vp-gray-100">{title}</h2>
+                    <p>{year}</p>
+                </hgroup>
+
+                {technologies && (
+                    <TagGroup
+                        tagArray={roles.concat(workTypes)}
+                    />
+                )}
+            </div>
+
+
+        </article>
+    );
 }

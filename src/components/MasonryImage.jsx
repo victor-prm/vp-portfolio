@@ -32,7 +32,7 @@ export default function MasonryImage({ image }) {
   };
 
   return (
-    <div className={`overflow-hidden rounded-lg ${aspectClasses[closest]}`}>
+    <div className={`overflow-hidden ${aspectClasses[closest]}`}>
       <img src={sourceUrl} alt={altText} className="w-full h-full object-cover" />
     </div>
   );

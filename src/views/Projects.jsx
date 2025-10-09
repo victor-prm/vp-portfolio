@@ -25,8 +25,12 @@ export default function App() {
                         <ErrorBoundary>
                             < PortfolioItem
                                 key={post.title}
-                                title={post.title}
                                 featuredImage={post.featuredImage}
+                                title={post.title}
+                                year={post.customPortfolioFields.year}
+                                technologies={post.technologies.nodes}
+                                roles={post.roles.nodes}
+                                workTypes={post.workTypes.nodes}
                             />
                         </ErrorBoundary>
                     )
