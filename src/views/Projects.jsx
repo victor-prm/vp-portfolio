@@ -20,7 +20,7 @@ export default function App() {
             <MasonryGrid>
                 {posts.map((post) => {
 
-                    console.log(post)
+                    /* console.log(post) */
                     return (
                         <ErrorBoundary>
                             < PortfolioItem
