@@ -241,6 +241,20 @@ export const GET_PAGE_BY_ID = gql`
       title
       slug
       content
+      featuredImage{
+      node{
+        id
+            sourceUrl
+            altText
+            title
+            caption
+            description
+            mediaDetails {
+              width
+              height
+            }
+      }
+    }
     }
   }
 `;

@@ -8,7 +8,7 @@ export default function TagGroup({ title, tagArray, onClick, category, linkBase 
   const activeSlug = searchParams.get(category) || searchParams.get("tag");
 
   return (
-    <div>
+    <div className="max-w-[95%]">
       {title && <h2 className="text-sm text-vp-gray-100 mb-1">{title}</h2>}
       <ul className="flex flex-wrap gap-1">
         {tagArray.map(tag => {
