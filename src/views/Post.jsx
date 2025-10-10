@@ -19,9 +19,9 @@ export default function Post() {
 
   return (
     <TwoColumnLayout
+      title={item.title}
       left={
         <>
-          <h1 className="text-gray-200 text-xl">{item.title}</h1>
           {item.content && (
             <div dangerouslySetInnerHTML={{ __html: item.content }} />
           )}

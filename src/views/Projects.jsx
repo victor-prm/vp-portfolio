@@ -68,9 +68,9 @@ export default function Projects() {
 
     return (
         <TwoColumnLayout
+            title={page}
             left={
                 <>
-                    <h1 className="text-vp-gray-200 text-xl capitalize">{page}</h1>
                     <SortToggle
                         field="year"
                         sortOrder={sortOrder}

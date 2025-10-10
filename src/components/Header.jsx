@@ -1,24 +1,26 @@
 import { NavLink } from 'react-router';
-import useMainNavigation from '../hooks/useMainNavigation';
+import useMenuByTitle from '../hooks/useMenuByTitle';
 
 export default function Header() {
-  const { menuSet, loading, error } = useMainNavigation();
+  const { menuSet, loading, error } = useMenuByTitle("Simple Menu");
   const baseUrl = window.location.origin;
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
   if (!menuSet) return <p>No menu found</p>;
 
+  const linkBaseStyle = "text-vp-gray-400 text-sm font-medium hover:underline"
+
   return (
-    <header className="flex flex-col gap-4 fixed z-50 m-4 w-fit">
+    <header className="flex gap-4 fixed z-50 m-4 w-fit">
       <nav>
         <img src="/vp-logo.svg" alt="VP Logo" className='h-6 w-fit' />
       </nav>
-      <ul className="space-y-2 hidden">
+      <ul className="space-y-2 flex gap-4">
         {menuSet.customMenuSets?.menuItems?.map((itemGroup, i) => (
           <li key={i}>
             {itemGroup.topLevelLink?.nodes?.map((link) => {
-              // ✅ define it inside this map, so "link" is in scope
+              // define it inside this map, so "link" is in scope
               const topLevelLink = `${baseUrl}${link.customMenuLinks?.subpath || ''}`;
 
               return (
@@ -26,7 +28,7 @@ export default function Header() {
                   <NavLink
                     to={topLevelLink}
                     target={link.customMenuLinks?.openNewTab ? '_blank' : '_self'}
-                    className="text-vp-gray-100 font-medium hover:underline"
+                    className={linkBaseStyle}
                   >
                     {link.title}
                   </NavLink>
@@ -41,7 +43,7 @@ export default function Header() {
                             <NavLink
                               to={nestedLink}
                               target={nested.customMenuLinks?.openNewTab ? '_blank' : '_self'}
-                              className="hover:underline"
+                              className={linkBaseStyle}
                             >
                               {nested.title}
                             </NavLink>

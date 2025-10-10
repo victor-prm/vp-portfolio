@@ -163,33 +163,34 @@ query GetMenuSets{
 }`
 
 
-export const GET_MAIN_NAVIGATION = gql`
-query GET_MAIN_NAVIGATION {
-  menuSets(where: { title: "Main Navigation" }) {
-    nodes {
-      title
-      customMenuSets {
-        menuItems {
-          topLevelLink {
-            nodes {
-              ... on MenuLink {
-                title
-                id
-                customMenuLinks {
-                  openNewTab
-                  subpath
+export const GET_MENU_BY_TITLE = gql`
+  query GetMenuByTitle($title: String!) {
+    menuSets(where: { title: $title }) {
+      nodes {
+        title
+        customMenuSets {
+          menuItems {
+            topLevelLink {
+              nodes {
+                ... on MenuLink {
+                  title
+                  id
+                  customMenuLinks {
+                    openNewTab
+                    subpath
+                  }
                 }
               }
             }
-          }
-          nestedLinks {
-            nodes {
-              ... on MenuLink {
-                title
-                id
-                customMenuLinks {
-                  openNewTab
-                  subpath
+            nestedLinks {
+              nodes {
+                ... on MenuLink {
+                  title
+                  id
+                  customMenuLinks {
+                    openNewTab
+                    subpath
+                  }
                 }
               }
             }
@@ -198,7 +199,6 @@ query GET_MAIN_NAVIGATION {
       }
     }
   }
-}
 `;
 
 export const GET_TAGS_TECHNOLOGIES = gql`
