@@ -1,4 +1,4 @@
-export default function MasonryImage({ image }) {
+export default function MasonryImage({ image, classModifier }) {
   if (!image) return null;
 
   const img = image.node || image;
@@ -31,8 +31,10 @@ export default function MasonryImage({ image }) {
     square: "aspect-square",
   };
 
+  const customAspect = aspectClasses[closest];
+
   return (
-    <div className={`overflow-hidden ${aspectClasses[closest]}`}>
+    <div className={`overflow-hidden ${classModifier}`}>
       <img src={sourceUrl} alt={altText} className="w-full h-full object-cover" />
     </div>
   );

@@ -9,9 +9,7 @@ import App from './App.jsx'
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <ApolloProvider client={client}>
-      <div className='bg-gradient-to-br from-vp-gray-950 to-vp-gray-900 text-vp-gray-300 min-h-screen'>
         <App />
-      </div>
     </ApolloProvider>
 
   </StrictMode>,

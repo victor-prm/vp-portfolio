@@ -45,6 +45,16 @@
   --spacing-vp-default: 2rem;
 }
 
+/* styles/globals.css */
+::-webkit-scrollbar {
+  display: none;
+}
+
+* {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;     /* Firefox */
+}
+
 body{
    font-family: var(--font-lexend);
 }
