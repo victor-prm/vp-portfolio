@@ -233,3 +233,14 @@ export const GET_TAGS_WORKTYPES = gql`
     }
   }
 `;
+
+
+export const GET_PAGE_BY_ID = gql`
+  query GetPageById($id: ID!) {
+    pageBy(id: $id) {
+      title
+      slug
+      content
+    }
+  }
+`;
