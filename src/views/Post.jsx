@@ -3,14 +3,13 @@ import usePortfolioItemSingle from "../hooks/usePortfolioItemSingle";
 import MasonryGrid from "../components/MasonryGrid";
 import MasonryImage from "../components/MasonryImage";
 import TwoColumnLayout from "../components/TwoColumnLayout";
+import TagGroup from "../components/TagGroup";
+import useTags from "../hooks/useTags";
 
 
 export default function Post() {
   const { slug } = useParams();
   const { item, loading, error } = usePortfolioItemSingle(slug);
-
-
-
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
@@ -23,11 +22,22 @@ export default function Post() {
   return (
     <TwoColumnLayout
       left={
-        <article>
+        <>
           <h1>{item.title}</h1>
           <div dangerouslySetInnerHTML={{ __html: item.content }} />
-        </article>
-
+          <TagGroup
+            tagArray={item.technologies.nodes}
+            linkBase="/projects"
+          />
+          <TagGroup
+            tagArray={item.roles.nodes}
+            linkBase="/projects"
+          />
+          <TagGroup
+            tagArray={item.workTypes.nodes}
+            linkBase="/projects"
+          />
+        </>
       }
       right={
         <MasonryGrid>

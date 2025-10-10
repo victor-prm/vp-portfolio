@@ -22,10 +22,10 @@ export default function PortfolioItem({ title, year, featuredImage, slug, techno
             {featuredImage?.node?.sourceUrl && (
                 <MasonryImage image={featuredImage.node} />
             )}
-            <div className="bg-gradient-to-br from-vp-gray-900/70 to-vp-gray-800/40 px-3 pb-0.5 flex flex-col absolute bottom-2 left-2 backdrop-blur-2xl rounded-2xl">
-                <hgroup className="flex gap-4 items-center">
-                    <h2 className="text-md text-vp-gray-100">{title}</h2>
-                    <p className="text-md text-vp-gray-100">{year}</p>
+            <div className="bg-gradient-to-br from-vp-gray-900/70 to-vp-gray-800/40 px-2 flex flex-col absolute bottom-2 left-2 backdrop-blur-2xl rounded-2xl">
+                <hgroup className="flex gap-2 items-center">
+                    <h2 className="text-sm sm:text-base text-vp-gray-100">{title}</h2>
+                    <p className="text-sm sm:text-base text-vp-gray-100">{year}</p>
                 </hgroup>
             </div>
         </article>

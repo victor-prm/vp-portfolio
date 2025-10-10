@@ -24,7 +24,7 @@ export default function MasonryGrid({ children }) {
       gutterY: 8,
       ultimateGutter: 4,
       surroundingGutter: false,
-      minify: true,
+      minify: false,
       wedge: true,
     });
 
