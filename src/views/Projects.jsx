@@ -8,6 +8,7 @@ import PortfolioItem from "../components/PortfolioItem";
 import ErrorBoundary from '../errors/ErrorBoundary';
 import TwoColumnLayout from '../components/TwoColumnLayout';
 import TagGroup from '../components/TagGroup';
+import SortToggle from '../components/SortToggle';
 
 export default function Projects() {
     const [searchParams, setSearchParams] = useSearchParams();
@@ -70,12 +71,12 @@ export default function Projects() {
             left={
                 <>
                     <h1 className="text-2xl font-semibold capitalize">{page}</h1>
-                    <button
-                        onClick={toggleSortOrder}
-                        className="p-2 border rounded flex items-center gap-2 w-fit mb-4"
-                    >
-                        {sortOrder === 'ASC' ? 'Year ↑' : 'Year ↓'}
-                    </button>
+                    <SortToggle
+                        field="year"
+                        sortOrder={sortOrder}
+                        onChange={(field, order) => setSortOrder(order)}
+                        title="Year"
+                    />
 
                     {technologies && (
                         <TagGroup

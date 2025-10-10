@@ -7,7 +7,7 @@ export default function TagGroup({ title, tagArray, onClick, category }) {
 
   return (
     <div>
-      {title && <h2 className="text-sm">{title}</h2>}
+      {title && <h2 className="text-sm text-vp-gray-100">{title}</h2>}
       <ul className="flex flex-wrap gap-1">
         {tagArray.map(tag => {
           const isActive = tag.slug === activeSlug;
