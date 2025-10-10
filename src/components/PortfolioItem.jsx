@@ -15,7 +15,7 @@ export default function PortfolioItem({ title, year, featuredImage, slug, techno
         <article
             onClick={handleCardClick}
             className="
-        border-vp-gray-800/40 border-2 rounded-3xl shadow-vp-gray-700/10 shadow-md
+        border-vp-gray-500/40 border-2 rounded-3xl shadow-vp-gray-700/10 shadow-md
         relative overflow-clip grayscale-50 cursor-pointer
         hover:grayscale-0 transition-[filter] duration-500"
         >

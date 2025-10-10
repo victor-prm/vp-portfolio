@@ -5,16 +5,11 @@ export default function MasonryGrid({ children }) {
   const containerRef = useRef(null);
   const [baseWidth, setBaseWidth] = useState(256);
 
-  // Adjust baseWidth on window resize
   useEffect(() => {
     const handleResize = () => {
-      const width = window.innerWidth;
-      if (width < 640) setBaseWidth(180); // small screens
-      /* else if (width < 1024) setBaseWidth(224); // medium */
-      else setBaseWidth(224); // large
+      setBaseWidth(window.innerWidth < 640 ? 180 : 224);
     };
-
-    handleResize(); // initial set
+    handleResize();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
@@ -33,10 +28,35 @@ export default function MasonryGrid({ children }) {
       wedge: true,
     });
 
-    // Re-layout on children change
+    const relayout = () => masonry.layout();
+
+    // Initial layout
     masonry.layout();
 
-    return () => masonry.destroy();
+    // 🖼️ Re-layout when all images have loaded
+    const images = containerRef.current.querySelectorAll("img");
+    let loadedCount = 0;
+    images.forEach((img) => {
+      if (img.complete) loadedCount++;
+      else {
+        img.addEventListener("load", () => {
+          loadedCount++;
+          if (loadedCount === images.length) relayout();
+        });
+        img.addEventListener("error", () => {
+          loadedCount++;
+          if (loadedCount === images.length) relayout();
+        });
+      }
+    });
+
+    // 🧯 Fallback re-layout after 1s (safety)
+    //const timeout = setTimeout(relayout, 1000);
+
+    return () => {
+      //clearTimeout(timeout);
+      masonry.destroy();
+    };
   }, [children, baseWidth]);
 
   return (

@@ -2,7 +2,7 @@ import { gql } from '@apollo/client'
 
 export const GET_PORTFOLIO_ITEMS = gql`
 query GetPortfolioItems {
-  portfolioItems {
+  portfolioItems(first: 50) {
     nodes {
       featuredImage{
         node{
@@ -31,20 +31,6 @@ query GetPortfolioItems {
               }
               title
               slug
-            }
-          }
-        }
-        portfolioItemGallery {
-          nodes {
-            id
-            sourceUrl
-            altText
-            title
-            caption
-            description
-            mediaDetails{
-              width
-              height
             }
           }
         }
@@ -97,7 +83,7 @@ export const GET_PORTFOLIO_ITEM_SINGLE = gql`
             }
           }
         }
-        portfolioItemGallery {
+        portfolioItemGallery(first: 50) {
           nodes {
             id
             sourceUrl
