@@ -203,7 +203,7 @@ query GET_MAIN_NAVIGATION {
 
 export const GET_TAGS_TECHNOLOGIES = gql`
   query GetTechnologies {
-    technologies {
+    technologies(first: 100) {
       nodes {
         name
         slug

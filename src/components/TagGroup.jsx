@@ -4,7 +4,7 @@ export default function TagGroup({ title, tagArray, onClick, category, linkBase 
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
 
-  // Support both ?category=slug and ?tag=slug
+  // Highlight tag if it matches ?category= or fallback ?tag=
   const activeSlug = searchParams.get(category) || searchParams.get("tag");
 
   return (
@@ -30,7 +30,9 @@ export default function TagGroup({ title, tagArray, onClick, category, linkBase 
                 </button>
               ) : (
                 <Link
-                  to={`${linkBase || "/projects"}?tag=${tag.slug}`}
+                  to={`${linkBase || "/projects"}?${
+                    category ? `${category}=${tag.slug}` : `tag=${tag.slug}`
+                  }`}
                   className={`${baseClasses} ${activeClasses}`}
                 >
                   {tag.name}

@@ -30,16 +30,21 @@ export default function Post() {
             tagArray={item.technologies.nodes}
             title="Technologies"
             linkBase="/projects"
+            category="technology"
           />
+
           <TagGroup
             tagArray={item.roles.nodes}
             title="Roles"
             linkBase="/projects"
+            category="role"
           />
+
           <TagGroup
             tagArray={item.workTypes.nodes}
             title="Work Type"
             linkBase="/projects"
+            category="workType"
           />
         </>
       }
