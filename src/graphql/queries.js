@@ -203,7 +203,7 @@ query GET_MAIN_NAVIGATION {
 
 export const GET_TAGS_TECHNOLOGIES = gql`
   query GetTechnologies {
-    technologies {
+    technologies(first: 100) {
       nodes {
         name
         slug
@@ -230,6 +230,31 @@ export const GET_TAGS_WORKTYPES = gql`
         name
         slug
       }
+    }
+  }
+`;
+
+
+export const GET_PAGE_BY_ID = gql`
+  query GetPageById($id: ID!) {
+    pageBy(id: $id) {
+      title
+      slug
+      content
+      featuredImage{
+      node{
+        id
+            sourceUrl
+            altText
+            title
+            caption
+            description
+            mediaDetails {
+              width
+              height
+            }
+      }
+    }
     }
   }
 `;

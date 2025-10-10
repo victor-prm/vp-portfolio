@@ -4,8 +4,6 @@ import MasonryGrid from "../components/MasonryGrid";
 import MasonryImage from "../components/MasonryImage";
 import TwoColumnLayout from "../components/TwoColumnLayout";
 import TagGroup from "../components/TagGroup";
-import useTags from "../hooks/useTags";
-
 
 export default function Post() {
   const { slug } = useParams();
@@ -23,19 +21,30 @@ export default function Post() {
     <TwoColumnLayout
       left={
         <>
-          <h1>{item.title}</h1>
-          <div dangerouslySetInnerHTML={{ __html: item.content }} />
+          <h1 className="text-gray-200 text-xl">{item.title}</h1>
+          {item.content && (
+            <div dangerouslySetInnerHTML={{ __html: item.content }} />
+          )}
+
           <TagGroup
             tagArray={item.technologies.nodes}
+            title="Technologies"
             linkBase="/projects"
+            category="technology"
           />
+
           <TagGroup
             tagArray={item.roles.nodes}
+            title="Roles"
             linkBase="/projects"
+            category="role"
           />
+
           <TagGroup
             tagArray={item.workTypes.nodes}
+            title="Work Type"
             linkBase="/projects"
+            category="workType"
           />
         </>
       }
