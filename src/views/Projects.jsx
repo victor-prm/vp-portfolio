@@ -70,7 +70,7 @@ export default function Projects() {
         <TwoColumnLayout
             left={
                 <>
-                    <h1 className="text-2xl font-semibold capitalize">{page}</h1>
+                    <h1 className="text-vp-gray-200 text-xl capitalize">{page}</h1>
                     <SortToggle
                         field="year"
                         sortOrder={sortOrder}

@@ -5,7 +5,7 @@ export default function SortToggle({ field, sortOrder, onChange, title }) {
     if (onChange) onChange(field, order);
   };
 
-  const baseClasses = "text-xs rounded-4xl px-2 py-1 whitespace-nowrap transition-colors";
+  const baseClasses = "text-xs rounded-4xl px-1.5 py-0.5 whitespace-nowrap transition-colors cursor-pointer";
   const activeClasses = "bg-vp-gray-200 text-vp-gray-800";
   const inactiveClasses = "bg-vp-gray-600/30 text-vp-gray-100 hover:bg-vp-gray-600/50";
 
